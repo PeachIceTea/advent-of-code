@@ -1,16 +1,26 @@
-use itertools::Itertools;
-use logos::Source;
+use logos::Source; // for &[u8].slice()
 
 fn main() {
     let input = std::fs::read_to_string("input/2015/11.txt").expect("input should exist");
-    println!("{} -> {}", input, increment(&input));
+
+    let first_password = find_next_password(&input);
+    let second_password = find_next_password(&first_password);
+
+    println!(
+        "Santa's next two passwords should be {} and {}.",
+        first_password, second_password
+    );
+}
+
+fn find_next_password(input: &str) -> String {
+    let mut new_password = increment(&input);
+    while !verify_string(&new_password) {
+        new_password = increment(&new_password);
+    }
+    new_password
 }
 
 fn increment(input: &str) -> String {
-    if !input.is_ascii() {
-        panic!("Input is not ascii");
-    }
-
     let input = input.as_bytes();
     let mut output = String::with_capacity(input.len());
     let mut last_copied = 0;
@@ -25,7 +35,7 @@ fn increment(input: &str) -> String {
         };
 
         output.insert(0, c);
-        last_copied = input.len() - i;
+        last_copied = input.len() - i - 1;
 
         if !wrapped {
             break;
@@ -43,14 +53,28 @@ fn increment(input: &str) -> String {
 fn verify_string(input: &str) -> bool {
     const MISTAKEABLE_CHARACTERS: [char; 3] = ['i', 'o', 'l'];
 
+    let mut letter_sequence_count = 0;
     let mut letter_pair_count = 0;
+
     let mut prev_letter = ' ';
     let mut prev_prev_letter = ' ';
-    for c in input.chars() {
-        if MISTAKEABLE_CHARACTERS.contains(&c) {
+    for letter in input.chars() {
+        if MISTAKEABLE_CHARACTERS.contains(&letter) {
             return false;
         }
+
+        if letter as u8 - 1 == prev_letter as u8 && prev_prev_letter as u8 + 1 == prev_letter as u8
+        {
+            letter_sequence_count += 1;
+        }
+
+        if letter == prev_letter && letter != prev_prev_letter {
+            letter_pair_count += 1;
+        }
+
+        prev_prev_letter = prev_letter;
+        prev_letter = letter;
     }
 
-    true
+    letter_sequence_count >= 1 && letter_pair_count >= 2
 }
