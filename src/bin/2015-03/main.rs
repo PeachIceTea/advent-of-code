@@ -34,7 +34,7 @@ fn house_with_presents_count(instructions: &str, robo_santa: bool) -> usize {
 }
 
 fn main() {
-    let input = std::fs::read_to_string("input/day3/input.txt")
+    let input = std::fs::read_to_string("input/2015/03.txt")
         .expect("input file should be at input/day3/input.txt");
 
     println!(

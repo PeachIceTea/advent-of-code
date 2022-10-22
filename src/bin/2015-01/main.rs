@@ -1,5 +1,5 @@
 fn main() {
-    let input = std::fs::read_to_string("input/day1/input.txt")
+    let input = std::fs::read_to_string("input/2015/01.txt")
         .expect("input file should be at input/day1/input.txt");
 
     // First part.

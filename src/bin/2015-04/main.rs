@@ -19,7 +19,7 @@ fn find_advent_coin_num(secret_key: &str, num_of_zeroes: i32) -> (String, i32) {
 }
 
 fn main() {
-    let secret_key = std::fs::read_to_string("input/day4/input.txt")
+    let secret_key = std::fs::read_to_string("input/2015/04.txt")
         .expect("input file should be at input/day4/input.txt");
 
     let (hash5, num5) = find_advent_coin_num(secret_key.as_str(), 5);

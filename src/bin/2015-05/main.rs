@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 fn main() {
-    let input = std::fs::read_to_string("input/day5/input.txt")
+    let input = std::fs::read_to_string("input/2015/05.txt")
         .expect("input file should be at input/day5/input.txt");
 
     // First part. I struggled with this quite a bit. This implementation is not as good as it could

@@ -80,7 +80,7 @@ fn on_off(input: &str) -> i32 {
 }
 
 fn brightness(input: &str) -> u32 {
-    let mut lights = vec![[0u32; 1000]; 1000];
+    let mut lights = vec![vec![0u8; 1000]; 1000];
 
     for (line_num, line) in input.lines().enumerate() {
         match Action::from_str(line) {
@@ -113,17 +113,17 @@ fn brightness(input: &str) -> u32 {
             Err(err) => panic!("could not parse line {line_num}: {err}"),
         }
     }
-    let mut brightness = 0;
+    let mut brightness: u32 = 0;
     for line in lights {
         for light in line {
-            brightness += light;
+            brightness += light as u32;
         }
     }
     brightness
 }
 
 fn main() {
-    let input = std::fs::read_to_string("input/day6/input.txt")
+    let input = std::fs::read_to_string("input/2015/06.txt")
         .expect("input file should be at input/day6/input.txt");
 
     println!(

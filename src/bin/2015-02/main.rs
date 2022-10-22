@@ -54,7 +54,7 @@ impl FromStr for Present {
 }
 
 fn main() {
-    let input = std::fs::read_to_string("input/day2/input.txt")
+    let input = std::fs::read_to_string("input/2015/02.txt")
         .expect("input file should be at input/day2/input.txt");
 
     let mut total_paper_needed = 0;
