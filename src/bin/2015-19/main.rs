@@ -43,7 +43,7 @@ fn calculate_fabrication(input: &String, replacements: &HashMap<String, String>)
     let reg = regex::Regex::new(
         &replacements
             .iter()
-            .map(|(a, b)| a.clone())
+            .map(|(a, _)| a.clone())
             .collect::<Vec<String>>()
             .join("|"),
     )
