@@ -324,7 +324,7 @@ fn main() {
         find_lowest_mana(&player, &boss, false, 0, None).unwrap()
     );
     println!(
-        "If you play on hard, you need at least {} mana to defeat teh boss.",
+        "If you play on hard, you need at least {} mana to defeat the boss.",
         find_lowest_mana(&player, &boss, true, 0, None).unwrap()
     );
 }
