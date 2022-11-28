@@ -18,10 +18,10 @@ fn main() {
         let steps: i32 = movement[1..movement.len()].parse().unwrap();
         for _ in 1..=steps {
             match direction {
-                0 => loc.0 += 1,
-                1 => loc.1 += 1,
-                2 => loc.0 -= 1,
-                3 => loc.1 -= 1,
+                0 => loc.1 += 1,
+                1 => loc.0 += 1,
+                2 => loc.1 -= 1,
+                3 => loc.0 -= 1,
                 _ => (),
             }
 
