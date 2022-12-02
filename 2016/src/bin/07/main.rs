@@ -75,6 +75,6 @@ fn main() {
         }
     }
 
-    println!("{}", tls_count);
-    println!("{}", ssl_count);
+    println!("{} of the IPs support TLS.", tls_count);
+    println!("{} of the IPs support SSL.", ssl_count);
 }
