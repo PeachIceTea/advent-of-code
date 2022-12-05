@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 itertools = "0.10.5"
+serde = "1.0.149"
+serde_scan = "0.4.1"
